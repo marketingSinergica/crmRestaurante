@@ -18,11 +18,11 @@ return new class extends Migration
             $table->date('fechaPedido');
             $table->date('fechaEntrega');
             //$table->string('productos');
-            $table->string('estado');
-            $table->int('cantidadProductos');
+            $table->string('estado')->default('Pendiente');
+            $table->double('cantidadProductos');
             $table->double('importeTotal');
-            $table->text('comentarioCocina');
-            $table->text('comentarioProveedor');
+            $table->string('comentarioCocina');
+            $table->string('comentarioProveedor');
         });
     }
 
