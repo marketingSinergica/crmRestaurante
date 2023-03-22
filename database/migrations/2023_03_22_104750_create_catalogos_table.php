@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('catalogos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('imagen');
+            $table->string('nombreProducto');
+            $table->string('descripcion');
+            //$table->string('proveedoresRelacionados');
+            $table->string('comentarios');
+            //$table->double('precio');
+            $table->string('formato');
         });
     }
 

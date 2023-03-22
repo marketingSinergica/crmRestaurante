@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nombreRestaurante');
+            $table->string('telefono');
+            $table->string('horarioRecpPedidos'); //horario de recepcion de pedidos
+            $table->string('direccion');
         });
     }
 

@@ -13,7 +13,7 @@ class Pedido extends Model
         'nombreRestaurante',
         'fechaPedido',
         'fechaEntrega',
-        'productos',
+        //'productos',
         'estado',
         'cantidadProductos',
         'importeTotal',

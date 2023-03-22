@@ -14,5 +14,7 @@ class Proveedor extends Model
         'telefonoContacto',
         'emailContacto',
         'direccion',
+        //'personaContacto',
+        //'catalogoPDF',
     ];
 }
