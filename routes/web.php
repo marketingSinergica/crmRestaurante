@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // el email tiene que ser verificado
-Auth::routes(['verify' => true ]);
+Auth::routes([]);
 
 // Si la persona no está autentificada no va a poder acceder a la ruta home
 Route::group(['middleware' => ['auth', 'verified']], function(){

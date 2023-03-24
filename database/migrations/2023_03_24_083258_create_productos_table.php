@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('fechaPedido');
-            $table->date('fechaEntrega');
-            $table->string('estado')->default('Pendiente');
-            $table->double('cantidadProductos');
-            $table->string('comentarioCocina', 1000)->nullable();
-            $table->softDeletes();
-
+            $table->string('nombre');
+            $table->string('formato');
+            $table->string('comentario',1000)->nullable();
+            $table->string('marca');
             $table->foreignId('user_id')->nullable()->constrained();
+            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('productos');
     }
 };
