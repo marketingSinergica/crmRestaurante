@@ -44,6 +44,15 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->email_verified_at}}</td>
                                     <td>
+                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">
+                                            Editar
+                                        </a>
+
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro?')" style="display: inline-block;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
