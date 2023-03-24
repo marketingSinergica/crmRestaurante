@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         User::create($request->validated());
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario creado exitosamente');
     }
 
     /**
