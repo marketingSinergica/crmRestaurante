@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,8 @@ Auth::routes(['verify' => true ]);
 
 // IMPORTANTE: ACTUALMENTE SE ENVÍAN LOS CORREOS A MAILTRAP DE PRUEBA (NO LLEGA A GMAIL)
 // Si la persona no está autentificada no va a poder acceder a la ruta home
-Route::group(['middleware' => ['auth', 'verified']], function(){
+Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('users', UserController::class);
 });
