@@ -29,6 +29,10 @@
     <script src="{{ asset('js/plugins/jquery.min.js') }}"></script>
     <script src="{{ asset('js/plugins/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+
+    <form id="logoutform" action="{{route('logout')}}" method = "POST" style = "display: none">
+        {{csrf_field() }}
+    </form>
 </body>
 
 </html>

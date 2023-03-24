@@ -20,12 +20,8 @@ Route::get('/', function () {
 // el email tiene que ser verificado
 Auth::routes(['verify' => true ]);
 
-// COMENTADO PORQUE NO ENVÍA EL CORREO DE VERIFICACIÓN Y NO PUEDO AVANZAR
+// IMPORTANTE: ACTUALMENTE SE ENVÍAN LOS CORREOS A MAILTRAP DE PRUEBA (NO LLEGA A GMAIL)
 // Si la persona no está autentificada no va a poder acceder a la ruta home
-/*Route::group(['middleware' => ['auth', 'verified']], function(){
+Route::group(['middleware' => ['auth', 'verified']], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-});*/
-
-Route::get('/home', function () {
-    return view('home');
 });
