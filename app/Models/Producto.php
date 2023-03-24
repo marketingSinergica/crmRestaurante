@@ -18,4 +18,12 @@ class Producto extends Model
         'marca',
         'user_id',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class)->withDefault();
+    }
+
+    public function pedido(){
+        return $this->belongsTo(Pedido::class)->withDefault();
+    }
 }
