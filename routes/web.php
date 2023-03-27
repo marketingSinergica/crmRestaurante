@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProveedoresController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 /*
@@ -27,5 +28,6 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function(
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::resource('users', UserController::class);
+    Route::resource('proveedors', ProveedoresController::class);
     Route::resource('pedidos', PedidoController::class);
 });

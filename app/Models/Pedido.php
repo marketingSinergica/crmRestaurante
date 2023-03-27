@@ -28,5 +28,10 @@ class Pedido extends Model
         return $this->hasMany(Producto::class);
     }
 
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class)->withDefault();
+    }
+
     
 }

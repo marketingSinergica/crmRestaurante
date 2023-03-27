@@ -26,4 +26,9 @@ class Producto extends Model
     public function pedido(){
         return $this->belongsTo(Pedido::class)->withDefault();
     }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class)->withDefault();
+    }
 }

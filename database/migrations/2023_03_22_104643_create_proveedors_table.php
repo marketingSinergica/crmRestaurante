@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('telefonoContacto');
-            $table->string('emailContacto');
+            $table->string('emailContacto')->unique();
             $table->string('direccion');
             //$table->string('personaContacto');
             //$table->blob('catalogoPDF');
