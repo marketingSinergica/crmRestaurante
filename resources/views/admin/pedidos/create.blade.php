@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Nuevo Proveedor</h1>
+                <h1 class="m-0">Nuevo Pedido</h1>
             </div>
         </div>
     </div>
@@ -17,56 +17,74 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="POST" action="{{route('admin.proveedors.store')}}">
+                        <form method="POST" action="{{route('admin.pedidos.store')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="nombre" class="required">Nombre del Proveedor </label>
-                                <input type="text" name="nombre" id="contact_name" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre del proveedor" value="{{old('nombre', '')}}">
-                                @if ($errors->has('nombre'))
+                                <label for="comentarioCocina" class="required">Comentario</label>
+                                <textarea name="comentarioCocina" class="form-control">{{old('comentarioCocina', '')}}</textarea>
+                                @if ($errors->has('comentarioCocina'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('nombre') }}</strong>
+                                    <strong>{{ $errors->first('comentarioCocina') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="telefonoContacto" class="required">Teléfono de contacto del proveedor</label>
-                                <input type="text" name="telefonoContacto" id="telefonoContacto" class="form-control {{$errors->has('telefonoContacto') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono del proveedor" value="{{old('telefonoContacto', '')}}">
-                                @if ($errors->has('telefonoContacto'))
+                                <label for="fechaPedido" class="required">Fecha de realización del pedido</label>
+                                <input name="fechaPedido" type="text" class="form-control date" value="{{old('fechaPedido')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaEntrega" class="required">Fecha de entrega límite</label>
+                                <input name="fechaEntrega" type="text" class="form-control date" value="{{old('fechaEntrega')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="user_id" class="required">Usuario</label>
+                                <select class="form-control select2" name="user_id" style="width: 100%;">
+                                    <option value="">Seleccione un usuario</option>
+                                    @foreach ($users as $user)
+                                    <option value="{{ $user->id }}" {{old('user_id') == $user->id ? 'selected' : ''}}>
+                                        {{ $user->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('user_id'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('telefonoContacto') }}</strong>
+                                    <strong>{{ $errors->first('user_id') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="emailContacto" class="required">Email del proveedor </label>
-                                <input type="email" name="emailContacto" id="emailContacto" class="form-control {{$errors->has('emailContacto') ? 'is-invalid' : ''}}" placeholder="Ingrese el email del proveedor" value="{{old('emailContacto', '')}}">
-                                @if ($errors->has('emailContacto'))
+                                <label for="proveedor_id" class="required">Proveedor</label>
+                                <select class="form-control select2" name="proveedor_id" style="width: 100%;">
+                                    <option value="">Seleccione un cliente</option>
+                                    @foreach ($clients as $client)
+                                    <option value="{{ $proveedor->id }}" {{old('proveedor_id') == $proveedor->id ? 'selected' : ''}}>
+                                        {{ $proveedor->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('proveedor_id'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('emailContacto') }}</strong>
+                                    <strong>{{ $errors->first('proveedor_id') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="direccion" class="required">Dirección de la empresa</label>
-                                <input type="text" name="direccion" id="direccion" class="form-control {{$errors->has('direccion') ? 'is-invalid' : ''}}" placeholder="Ingrese la dirección" value="{{old('direccion', '')}}">
-                                @if ($errors->has('direccion'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('direccion') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="comentario" class="required">Comentario</label>
-                                <input type="text" name="comentario" id="comentario" class="form-control {{$errors->has('comentario') ? 'is-invalid' : ''}}" placeholder="El horario de entrega es..." value="{{old('comentario', '')}}">
-                                @if ($errors->has('comentario'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('comentario') }}</strong>
-                                </span>
+                                <label for="status">Status del proyecto</label>
+                                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
+                                    <option value="">Seleccione un status</option>
+                                    @foreach(App\Models\Project::STATUS as $status)
+                                    <option value="{{ $status }}" {{ old('status') == $status ? 'selected' : '' }}>{{ $status }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('status'))
+                                <div class="text-danger">
+                                    {{ $errors->first('status') }}
+                                </div>
                                 @endif
                             </div>
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
-                                    <a class="btn btn-danger" href="{{route('admin.proveedors.index')}}">
+                                    <a class="btn btn-danger" href="{{route('admin.pedidos.index')}}">
                                         <i class="fa fa-fw fa-lg fa-arrow-left"></i>
                                         Regresar
                                     </a>

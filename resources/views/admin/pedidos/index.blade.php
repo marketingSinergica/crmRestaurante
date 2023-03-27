@@ -36,17 +36,21 @@
                                     <th>Estado</th>
                                     <th>Cantidad de productos</th>
                                     <th>Comentario</th>
+                                    <th>Usuario</th>
+                                    <th>Proveedor</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($pedidos as $pedido)
                                 <tr>
-                                    <td>{{$pedido->nombre}}</td>
-                                    <td>{{$pedido->emailContacto}}</td>
-                                    <td>{{$pedido->telefonoContacto}}</td>
-                                    <td>{{$pedido->direccion}}</td>
-                                    <td>{{$pedido->comentario}}</td>
+                                    <td>{{$pedido->fechaPedido}}</td>
+                                    <td>{{$pedido->fechaEntrega}}</td>
+                                    <td>{{$pedido->estado}}</td>
+                                    <td>{{$pedido->cantidadProductos}}</td>
+                                    <td>{{$pedido->comentarioCocina}}</td>
+                                    <td>{{$pedido->user->nombre}}</td>
+                                    <td>{{$pedido->proveedor->nombre}}</td>
                                     <td>
                                         <a href="{{ route('admin.proveedors.edit', $pedido->id) }}" class="btn btn-success">
                                             Editar

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Http\Requests\StorePedidoRequest;
 use App\Http\Requests\UpdatePedidoRequest;
+use App\Models\Proveedor;
+use App\Models\User;
 
 class PedidoController extends Controller
 {
@@ -13,7 +15,8 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::with(['proveedor', 'user'])->get();
+        return view('admin.pedidos.index', compact('pedidos'));
     }
 
     /**
@@ -21,7 +24,9 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $proveedors = Proveedor::all();
+        return view('admin.pedidos.create', compact('users','proveedors'));
     }
 
     /**
