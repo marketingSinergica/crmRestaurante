@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Listado de Pedidos</h1>
+                <h1 class="m-0">Listado de Proveedores</h1>
             </div>
             
         </div>
@@ -26,33 +26,33 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{route('admin.pedidos.create')}}" class="btn btn-primary mb-3">Nuevo Proveedor</a>
+                        <a href="{{route('admin.proveedors.create')}}" class="btn btn-primary mb-3">Nuevo Proveedor</a>
 
                         <table class="table table-bordered" id="proveedor_table">
                             <thead>
                                 <tr>
-                                    <th>Fecha del pedido</th>
-                                    <th>Fecha de entrega</th>
-                                    <th>Estado</th>
-                                    <th>Cantidad de productos</th>
+                                    <th>Nombre del proveedor</th>
+                                    <th>Email de contacto</th>
+                                    <th>Telefono de contacto</th>
+                                    <th>Direccion</th>
                                     <th>Comentario</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pedidos as $pedido)
+                                @foreach ($proveedors as $proveedor)
                                 <tr>
-                                    <td>{{$pedido->nombre}}</td>
-                                    <td>{{$pedido->emailContacto}}</td>
-                                    <td>{{$pedido->telefonoContacto}}</td>
-                                    <td>{{$pedido->direccion}}</td>
-                                    <td>{{$pedido->comentario}}</td>
+                                    <td>{{$proveedor->nombre}}</td>
+                                    <td>{{$proveedor->emailContacto}}</td>
+                                    <td>{{$proveedor->telefonoContacto}}</td>
+                                    <td>{{$proveedor->direccion}}</td>
+                                    <td>{{$proveedor->comentario}}</td>
                                     <td>
-                                        <a href="{{ route('admin.proveedors.edit', $pedido->id) }}" class="btn btn-success">
+                                        <a href="{{ route('admin.proveedors.edit', $proveedor->id) }}" class="btn btn-success">
                                             Editar
                                         </a>
 
-                                        <form action="{{ route('admin.pedidos.destroy', $pedido->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro?')" style="display: inline-block;">
+                                        <form action="{{ route('admin.proveedors.destroy', $proveedor->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro?')" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="submit" class="btn btn-danger" value="Eliminar">
@@ -73,7 +73,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('#pedido_table').DataTable();
+        $('#proveedor_table').DataTable();
     });
 </script>
 @endsection
@@ -81,7 +81,7 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
-        $('#pedido_table').DataTable();
+        $('#proveedor_table').DataTable();
     });
 </script>
 @endsection

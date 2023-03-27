@@ -17,6 +17,7 @@ class Pedido extends Model
         'estado',
         'cantidadProductos',
         'comentarioCocina',
+        'proveedor_id',
         'user_id',
     ];
 

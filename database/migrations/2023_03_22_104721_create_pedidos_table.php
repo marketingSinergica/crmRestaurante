@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('cantidadProductos');
             $table->string('comentarioCocina', 1000)->nullable();
             $table->softDeletes();
-
+            $table->foreignId('proveedor_id')->nullable()->constrained();
             $table->foreignId('user_id')->nullable()->constrained();
         });
     }

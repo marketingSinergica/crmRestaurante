@@ -11,7 +11,7 @@ class UpdateProveedorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class UpdateProveedorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => [
+                'required'
+            ],
+            'telefonoContacto' => [
+                'required'
+            ],
+            'emailContacto' => [
+                'required',
+                'unique:proveedors,emailContacto,' . $this->proveedor->id
+            ],
+            'direccion' => [
+                'required'
+            ],
+            'comentario' => [
+                'nullable'
+            ],
         ];
     }
 }
