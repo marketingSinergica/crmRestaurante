@@ -30,6 +30,15 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="cantidadProductos" class="required">Nombre del Proveedor </label>
+                                <input type="text" name="cantidadProductos" id="contact_name" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre del proveedor" value="{{old('cantidadProductos', $proveedor->nombre)}}">
+                                @if ($errors->has('nombre'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('cantidadProductos') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="telefonoContacto" class="required">Teléfono de contacto del proveedor</label>
                                 <input type="text" name="telefonoContacto" id="telefonoContacto" class="form-control {{$errors->has('telefonoContacto') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono del proveedor" value="{{old('telefonoContacto', $proveedor->telefonoContacto)}}">
                                 @if ($errors->has('telefonoContacto'))

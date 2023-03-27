@@ -11,7 +11,7 @@ class StorePedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,25 @@ class StorePedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'fechaPedido' => [
+                'required'
+            ],
+            'fechaEntrega' => [
+                'required'
+            ],
+            'comentarioCocina' => [
+                'nullable'
+            ],
+            'cantidadProductos' => [
+                'required'
+            ],
+            'proveedor_id' => [
+                'required'
+            ],
+            'user_id' => [
+                'required'
+            ],
+
         ];
     }
 }

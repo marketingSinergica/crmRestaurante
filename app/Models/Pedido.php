@@ -21,6 +21,8 @@ class Pedido extends Model
         'user_id',
     ];
 
+    public const STATUS = ['Pendiente', 'Validado', 'Confirmado', 'Enviado', 'Entregado'];
+
     public function user(){
         return $this->belongsTo(User::class)->withDefault();
     }

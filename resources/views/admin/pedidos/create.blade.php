@@ -29,6 +29,15 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="cantidadProductos" class="required">Cantidad productos</label>
+                                <textarea name="cantidadProductos" class="form-control">{{old('cantidadProductos', '')}}</textarea>
+                                @if ($errors->has('cantidadProductos'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('cantidadProductos') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="fechaPedido" class="required">Fecha de realización del pedido</label>
                                 <input name="fechaPedido" type="text" class="form-control date" value="{{old('fechaPedido')}}">
                             </div>
@@ -42,7 +51,7 @@
                                     <option value="">Seleccione un usuario</option>
                                     @foreach ($users as $user)
                                     <option value="{{ $user->id }}" {{old('user_id') == $user->id ? 'selected' : ''}}>
-                                        {{ $user->nombre }}
+                                        {{ $user->name }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -55,8 +64,8 @@
                             <div class="form-group">
                                 <label for="proveedor_id" class="required">Proveedor</label>
                                 <select class="form-control select2" name="proveedor_id" style="width: 100%;">
-                                    <option value="">Seleccione un cliente</option>
-                                    @foreach ($clients as $client)
+                                    <option value="">Seleccione un proveedor</option>
+                                    @foreach ($proveedors as $proveedor)
                                     <option value="{{ $proveedor->id }}" {{old('proveedor_id') == $proveedor->id ? 'selected' : ''}}>
                                         {{ $proveedor->nombre }}
                                     </option>
@@ -72,7 +81,7 @@
                                 <label for="status">Status del proyecto</label>
                                 <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
                                     <option value="">Seleccione un status</option>
-                                    @foreach(App\Models\Project::STATUS as $status)
+                                    @foreach(App\Models\Pedido::STATUS as $status)
                                     <option value="{{ $status }}" {{ old('status') == $status ? 'selected' : '' }}>{{ $status }}</option>
                                     @endforeach
                                 </select>

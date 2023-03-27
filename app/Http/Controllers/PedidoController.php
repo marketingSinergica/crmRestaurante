@@ -34,7 +34,9 @@ class PedidoController extends Controller
      */
     public function store(StorePedidoRequest $request)
     {
-        //
+        Pedido::create($request->validated());
+
+        return redirect()->route('admin.pedidos.index')->with('success','Pedido creado exitosamente');
     }
 
     /**
@@ -50,7 +52,11 @@ class PedidoController extends Controller
      */
     public function edit(Pedido $pedido)
     {
-        //
+        $users = User::all();
+
+        $pedido = Pedido::all();
+
+        return view('admin.projects.edit', compact('users', 'clients', 'project'));
     }
 
     /**
@@ -58,7 +64,9 @@ class PedidoController extends Controller
      */
     public function update(UpdatePedidoRequest $request, Pedido $pedido)
     {
-        //
+        $pedido->update($request->validated());
+
+        return redirect()->route('admin.pedidos.index')->with('success', 'Pedido editado exitosamente');
     }
 
     /**
@@ -66,6 +74,8 @@ class PedidoController extends Controller
      */
     public function destroy(Pedido $pedido)
     {
-        //
+        $pedido->delete();
+
+        return back();
     }
 }
