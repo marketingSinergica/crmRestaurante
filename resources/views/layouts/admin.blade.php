@@ -39,8 +39,21 @@
     <script>
         $(document).ready(function() {
             flatpickr(".date", {
-                "locale": "es"
+                "locale": "es",
+                dateFormat: "d/m/Y",
             });
+
+            $.extend(true, $.fn.dataTable.defaults, {
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
+                },
+                columnDefs: [{ 
+                    targets: -1,
+                    "searching": false,
+                    "orderable": false,
+                },]
+            });
+
             $('.select2').select2();
         })
     </script>

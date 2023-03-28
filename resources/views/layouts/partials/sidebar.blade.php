@@ -47,7 +47,7 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefautl(); document.getElementById('logoutform').submit();">
-                    <i class="fas fa-fw fa-sign-out-alt nav-icon"></i 
+                    <i class="fas fa-fw fa-sign-out-alt nav-icon"></i>
                     <p>
                         Cerrar Sesión
                     </p>
