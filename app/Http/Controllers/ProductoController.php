@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedido;
 use App\Models\Producto;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
+use App\Models\Proveedor;
+use Illuminate\Foundation\Auth\User;
 
 class ProductoController extends Controller
 {
@@ -22,7 +25,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $proveedors = Proveedor::all();
+        $pedidos = Pedido::all();
+        return view('admin.productos.create', compact('users','proveedors', 'pedidos'));
     }
 
     /**

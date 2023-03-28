@@ -32,12 +32,13 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Cantidad</th>
                                     <th>Formato</th>
                                     <th>Comentario</th>
                                     <th>Marca</th>
                                     <th>Usuario</th>
                                     <th>Proveedor</th>
-                                    <th>Pedido</th>
+                                    <th>Nº Pedido</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@
                                 @foreach ($productos as $producto)
                                 <tr>
                                     <td>{{$producto->nombre}}</td>
+                                    <td>{{$producto->cantidad}}</td>
                                     <td>{{$producto->formato}}</td>
                                     <td>{{$producto->comentario}}</td>
                                     <td>{{$producto->marca}}</td>

@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Nuevo Pedido</h1>
+                <h1 class="m-0">Nuevo Producto</h1>
             </div>
         </div>
     </div>
@@ -17,33 +17,52 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="POST" action="{{route('admin.pedidos.store')}}">
+                        <form method="POST" action="{{route('admin.productos.store')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="comentarioCocina" class="required">Comentario</label>
-                                <textarea name="comentarioCocina" class="form-control">{{old('comentarioCocina', '')}}</textarea>
-                                @if ($errors->has('comentarioCocina'))
+                                <label for="nombre" class="required">Producto</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre del producto" value="{{old('nombre', '')}}">
+                                @if ($errors->has('nombre'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('comentarioCocina') }}</strong>
+                                    <strong>{{ $errors->first('nombre') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="cantidadProductos" class="required">Cantidad productos</label>
-                                <textarea name="cantidadProductos" class="form-control">{{old('cantidadProductos', '')}}</textarea>
-                                @if ($errors->has('cantidadProductos'))
+                                <label for="cantidad" class="required">Producto</label>
+                                <input type="text" name="cantidad" id="cantidad" class="form-control {{$errors->has('cantidad') ? 'is-invalid' : ''}}" placeholder="Ingrese la cantidad del producto" value="{{old('cantidad', '')}}">
+                                @if ($errors->has('cantidad'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('cantidadProductos') }}</strong>
+                                    <strong>{{ $errors->first('cantidad') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="fechaPedido" class="required">Fecha de realización del pedido</label>
-                                <input name="fechaPedido" type="text" class="form-control date" value="{{old('fechaPedido')}}">
+                                <label for="formato" class="required">Formato</label>
+                                <input type="text" name="formato" id="formato" class="form-control {{$errors->has('formato') ? 'is-invalid' : ''}}" placeholder="Kilos, bandejas, ..." value="{{old('formato', '')}}">
+                                @if ($errors->has('formato'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('formato') }}</strong>
+                                </span>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label for="fechaEntrega" class="required">Fecha de entrega límite</label>
-                                <input name="fechaEntrega" type="text" class="form-control date" value="{{old('fechaEntrega')}}">
+                                <label for="comentario" class="required">Comentario</label>
+                                <input type="text" name="comentario" id="comentario" class="form-control {{$errors->has('comentario') ? 'is-invalid' : ''}}" placeholder="Ingrese algún comentario" value="{{old('comentario', '')}}">
+                                @if ($errors->has('comentario'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('comentario') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="marca" class="required">Marca</label>
+                                <input type="text" name="marca" id="marca" class="form-control {{$errors->has('marca') ? 'is-invalid' : ''}}" placeholder="Ingrese la marca del producto" value="{{old('marca', '')}}">
+                                @if ($errors->has('marca'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('marca') }}</strong>
+                                </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="user_id" class="required">Usuario</label>
@@ -64,7 +83,7 @@
                             <div class="form-group">
                                 <label for="proveedor_id" class="required">Proveedor</label>
                                 <select class="form-control select2" name="proveedor_id" style="width: 100%;">
-                                    <option value="">Seleccione un proveedor</option>
+                                    <option value="">Seleccione un cliente</option>
                                     @foreach ($proveedors as $proveedor)
                                     <option value="{{ $proveedor->id }}" {{old('proveedor_id') == $proveedor->id ? 'selected' : ''}}>
                                         {{ $proveedor->nombre }}
@@ -78,17 +97,19 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="status">Status del proyecto</label>
-                                <select class="form-control select2 {{ $errors->has('estado') ? 'is-invalid' : '' }}" name="estado" id="estado" required>
-                                    <option value="">Seleccione un status</option>
-                                    @foreach(App\Models\Pedido::STATUS as $status)
-                                    <option value="{{ $estado }}" {{ old('estado') == $estado ? 'selected' : '' }}>{{ $estado }}</option>
+                                <label for="pedido_id" class="required">Nº Pedido</label>
+                                <select class="form-control select2" name="pedido_id" style="width: 100%;">
+                                    <option value="">Seleccione un proyecto</option>
+                                    @foreach ($pedidos as $pedido)
+                                    <option value="{{ $pedido->id }}" {{old('pedido_id') == $pedido->id ? 'selected' : ''}}>
+                                        {{ $pedido->id }}
+                                    </option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('estado'))
-                                <div class="text-danger">
-                                    {{ $errors->first('estado') }}
-                                </div>
+                                @if ($errors->has('pedido_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('pedido_id') }}</strong>
+                                </span>
                                 @endif
                             </div>
                             <div class="row d-print-none mt-2">
@@ -98,7 +119,7 @@
                                         Regresar
                                     </a>
                                     <button class="btn btn-success" type="submit">
-                                        <i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar
+                                        <i class="fa fa-fw fa-lg fa-check-circle"></i> Guardar
                                     </button>
                                 </div>
                             </div>

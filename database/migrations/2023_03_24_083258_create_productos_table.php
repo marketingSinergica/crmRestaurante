@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
+            $table->string('cantidad');
             $table->string('formato');
             $table->string('comentario',1000)->nullable();
             $table->string('marca');
