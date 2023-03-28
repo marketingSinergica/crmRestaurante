@@ -36,7 +36,8 @@ class ProductoController extends Controller
      */
     public function store(StoreProductoRequest $request)
     {
-        //
+        Producto::create($request->validated());
+        return redirect()->route('admin.productos.index')->with('success', 'Producto creado exitosamente');
     }
 
     /**
@@ -52,7 +53,13 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        $users = User::all();
+
+        $proveedors = Proveedor::all();
+
+        $pedidos = Pedido::all();
+
+        return view('admin.productos.edit', compact('users', 'proveedors', 'pedidos', 'producto'));
     }
 
     /**
@@ -60,7 +67,9 @@ class ProductoController extends Controller
      */
     public function update(UpdateProductoRequest $request, Producto $producto)
     {
-        //
+        $producto->update($request->validated());
+
+        return redirect()->route('admin.productos.index')->with('success', 'Producto editado exitosamente');
     }
 
     /**
@@ -68,6 +77,8 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+
+        return back();
     }
 }

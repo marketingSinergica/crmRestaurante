@@ -29,7 +29,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="cantidad" class="required">Producto</label>
+                                <label for="cantidad" class="required">Cantidad</label>
                                 <input type="text" name="cantidad" id="cantidad" class="form-control {{$errors->has('cantidad') ? 'is-invalid' : ''}}" placeholder="Ingrese la cantidad del producto" value="{{old('cantidad', '')}}">
                                 @if ($errors->has('cantidad'))
                                 <span class="text-danger">
