@@ -31,6 +31,7 @@
                         <table class="table table-bordered" id="pedidos_table">
                             <thead>
                                 <tr>
+                                    <th>Nº Pedido</th>
                                     <th>Fecha del pedido</th>
                                     <th>Fecha de entrega</th>
                                     <th>Estado</th>
@@ -44,12 +45,13 @@
                             <tbody>
                                 @foreach ($pedidos as $pedido)
                                 <tr>
+                                    <td>{{$pedido->id}}</td>
                                     <td>{{$pedido->fechaPedido}}</td>
                                     <td>{{$pedido->fechaEntrega}}</td>
                                     <td>{{$pedido->estado}}</td>
                                     <td>{{$pedido->cantidadProductos}}</td>
                                     <td>{{$pedido->comentarioCocina}}</td>
-                                    <td>{{$pedido->user->nombre}}</td>
+                                    <td>{{$pedido->user->name}}</td>
                                     <td>{{$pedido->proveedor->nombre}}</td>
                                     <td>
                                         <a href="{{ route('admin.pedidos.edit', $pedido->id) }}" class="btn btn-success">

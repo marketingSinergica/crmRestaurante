@@ -17,6 +17,8 @@ class Producto extends Model
         'comentario',
         'marca',
         'user_id',
+        'proveedor_id',
+        'pedido_id'
     ];
 
     public function user(){

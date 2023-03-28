@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Listado de Pedidos</h1>
+                <h1 class="m-0">Listado de Productos</h1>
             </div>
             
         </div>
@@ -26,37 +26,37 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{route('admin.pedidos.create')}}" class="btn btn-primary mb-3">Nuevo Pedido</a>
+                        <a href="{{route('admin.productos.create')}}" class="btn btn-primary mb-3">Nuevo Producto</a>
 
-                        <table class="table table-bordered" id="pedidos_table">
+                        <table class="table table-bordered" id="productos_table">
                             <thead>
                                 <tr>
-                                    <th>Fecha del pedido</th>
-                                    <th>Fecha de entrega</th>
-                                    <th>Estado</th>
-                                    <th>Cantidad de productos</th>
+                                    <th>Nombre</th>
+                                    <th>Formato</th>
                                     <th>Comentario</th>
+                                    <th>Marca</th>
                                     <th>Usuario</th>
                                     <th>Proveedor</th>
+                                    <th>Pedido</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pedidos as $pedido)
+                                @foreach ($productos as $producto)
                                 <tr>
-                                    <td>{{$pedido->fechaPedido}}</td>
-                                    <td>{{$pedido->fechaEntrega}}</td>
-                                    <td>{{$pedido->estado}}</td>
-                                    <td>{{$pedido->cantidadProductos}}</td>
-                                    <td>{{$pedido->comentarioCocina}}</td>
-                                    <td>{{$pedido->user->nombre}}</td>
-                                    <td>{{$pedido->proveedor->nombre}}</td>
+                                    <td>{{$producto->nombre}}</td>
+                                    <td>{{$producto->formato}}</td>
+                                    <td>{{$producto->comentario}}</td>
+                                    <td>{{$producto->marca}}</td>
+                                    <td>{{$producto->user->name}}</td>
+                                    <td>{{$producto->proveedor->nombre}}</td>
+                                    <td>{{$producto->pedido->id}}</td>
                                     <td>
-                                        <a href="{{ route('admin.pedidos.edit', $pedido->id) }}" class="btn btn-success">
+                                        <a href="{{ route('admin.producto.edit', $producto->id) }}" class="btn btn-success">
                                             Editar
                                         </a>
 
-                                        <form action="{{ route('admin.pedidos.destroy', $pedido->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro?')" style="display: inline-block;">
+                                        <form action="{{ route('admin.producto.destroy', $producto->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro?')" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="submit" class="btn btn-danger" value="Eliminar">
@@ -77,7 +77,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $('#pedido_table').DataTable();
+        $('#producto_table').DataTable();
     });
 </script>
 @endsection
@@ -85,7 +85,7 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
-        $('#pedido_table').DataTable();
+        $('#producto_table').DataTable();
     });
 </script>
 @endsection

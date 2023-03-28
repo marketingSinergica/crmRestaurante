@@ -39,9 +39,9 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('admin.productos.index')}}" class="nav-link">
                       <i class="nav-icon fas fa-clipboard-list"></i <p>
-                      Tareas
+                      Productos
                       </p>
                   </a>
               </li>

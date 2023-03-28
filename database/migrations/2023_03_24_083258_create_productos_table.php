@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('comentario',1000)->nullable();
             $table->string('marca');
             $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('proveedor_id')->nullable()->constrained();
+            $table->foreignId('pedido_id')->nullable()->constrained();
             $table->softDeletes();
         });
     }

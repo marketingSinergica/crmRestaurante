@@ -81,7 +81,7 @@
                                 <label for="status">Status del proyecto</label>
                                 <select class="form-control select2 {{ $errors->has('estado') ? 'is-invalid' : '' }}" name="estado" id="estado" required>
                                     <option value="">Seleccione un status</option>
-                                    @foreach(App\Models\Pedido::STATUS as $status)
+                                    @foreach(App\Models\Pedido::STATUS as $estado)
                                     <option value="{{ $estado }}" {{ old('estado') == $estado ? 'selected' : '' }}>{{ $estado }}</option>
                                     @endforeach
                                 </select>
