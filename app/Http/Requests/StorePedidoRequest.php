@@ -40,6 +40,9 @@ class StorePedidoRequest extends FormRequest
             'user_id' => [
                 'required'
             ],
+            'estado' => [
+                'required'
+            ],
 
         ];
     }

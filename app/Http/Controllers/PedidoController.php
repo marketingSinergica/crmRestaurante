@@ -54,9 +54,9 @@ class PedidoController extends Controller
     {
         $users = User::all();
 
-        $pedido = Pedido::all();
+        $proveedors = Proveedor::all();
 
-        return view('admin.projects.edit', compact('users', 'clients', 'project'));
+        return view('admin.pedidos.edit', compact('users', 'proveedors', 'pedido'));
     }
 
     /**
