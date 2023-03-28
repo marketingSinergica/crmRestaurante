@@ -29,6 +29,7 @@
         @include('layouts.partials.footer')
     </div>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/plugins/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
     <script src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.13.4/datatables.min.js"></script>

@@ -40,8 +40,9 @@
               </li>
               <li class="nav-item">
                   <a href="{{route('admin.productos.index')}}" class="nav-link">
-                      <i class="nav-icon fas fa-clipboard-list"></i <p>
-                      Productos
+                      <i class="nav-icon fas fa-clipboard-list"></i>
+                      <p>
+                            Productos
                       </p>
                   </a>
               </li>
