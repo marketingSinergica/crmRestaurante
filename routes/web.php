@@ -5,6 +5,7 @@ use App\Http\Controllers\ProveedoresController;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,5 +32,5 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function(
     Route::resource('users', UserController::class);
     Route::resource('proveedors', ProveedoresController::class);
     Route::resource('pedidos', PedidoController::class);
-    Route::resource('productos', Producto::class);
+    Route::resource('productos', ProductoController::class);
 });
