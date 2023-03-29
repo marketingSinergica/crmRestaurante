@@ -46,6 +46,9 @@ class StorePedidoRequest extends FormRequest
             'estado' => [
                 'required'
             ],
+            'catalogo' => [
+                'required'
+            ],
 
         ];
     }

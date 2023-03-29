@@ -46,6 +46,9 @@ class UpdatePedidoRequest extends FormRequest
             'estado' => [
                 'required'
             ],
+            'catalogo' => [
+                'required'
+            ],
         ];
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('emailContacto')->unique();
             $table->string('direccion');
             $table->string('comentario')->nullable();
+            $table->string('catalogo')->nullable();
             //$table->string('personaContacto');
             //$table->blob('catalogoPDF');
         });
