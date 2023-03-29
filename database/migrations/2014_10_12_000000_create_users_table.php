@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('rol')->default('admin');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('nombre_empresa');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

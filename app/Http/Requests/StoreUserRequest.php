@@ -35,6 +35,12 @@ class StoreUserRequest extends FormRequest
                 'confirmed',
                 'min:8'
             ],
+            'nombre_empresa' => [
+                'required'
+            ],
+            'telefono' => [
+                'required'
+            ],
         ];
     }
 }
