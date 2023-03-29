@@ -21,6 +21,7 @@ class Pedido extends Model
         'comentarioCocina',
         'proveedor_id',
         'user_id',
+        'restaurante_id',
     ];
 
     public const STATUS = ['Pendiente', 'Validado', 'Confirmado', 'Enviado', 'Entregado'];

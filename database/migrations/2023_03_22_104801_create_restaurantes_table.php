@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('horarioRecpPedidos'); //horario de recepcion de pedidos
             $table->string('direccion');
+            $table->foreignId('user_id')->nullable()->constrained();
         });
     }
 

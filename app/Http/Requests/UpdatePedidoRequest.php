@@ -40,6 +40,9 @@ class UpdatePedidoRequest extends FormRequest
             'user_id' => [
                 'required'
             ],
+            'restaurante_id' => [
+                'required'
+            ],
             'estado' => [
                 'required'
             ],

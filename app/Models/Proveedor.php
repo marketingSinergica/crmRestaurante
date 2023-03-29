@@ -15,6 +15,7 @@ class Proveedor extends Model
         'emailContacto',
         'direccion',
         'comentario',
+        'user_id'
         //'personaContacto',
         //'catalogoPDF',
     ];
