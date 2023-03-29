@@ -6,6 +6,7 @@ use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\LogoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,4 +34,5 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function(
     Route::resource('proveedors', ProveedoresController::class);
     Route::resource('pedidos', PedidoController::class);
     Route::resource('productos', ProductoController::class);
+    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
 });
