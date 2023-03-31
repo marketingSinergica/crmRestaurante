@@ -54,7 +54,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Pedido::class);
     }
 
-    
+    public function productos(){
+        return $this->hasMany(Producto::class);
+    }
 
     public function setPasswordAttribute($input)
     {
